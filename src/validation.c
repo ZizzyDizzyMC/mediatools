@@ -207,7 +207,7 @@ int mediatools_validate_video(AVFormatContext *format)
     } else if (strcmp(iformat->name, "mov") == 0) {
         switch (vpar->codec_id) {
             default:
-                printf("Bad video codec for MOV container (Must be MOV)\n");
+                printf("Bad video codec for mp4 container (must be H.264 or HEVC)\n");
                 return false;
             case AV_CODEC_ID_H264:
             case AV_CODEC_ID_HEVC:
