@@ -211,6 +211,7 @@ int mediatools_validate_video(AVFormatContext *format)
                 return false;
             case AV_CODEC_ID_H264:
             case AV_CODEC_ID_HEVC:
+            case AV_CODEC_ID_MPEG4:
                 ;
         }
         if (!validate_video_pixel_format(vpar->format)) {
