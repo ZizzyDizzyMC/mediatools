@@ -204,7 +204,7 @@ int mediatools_validate_video(AVFormatContext *format)
         case AV_CODEC_ID_SVG:
             ;
         }
-    } else if (strcmp(iformat->name, "mov") == 0) {
+    } else if (strcmp(iformat->name, "mov,mp4,m4a,3gp,3g2,mj2") == 0) {
         switch (vpar->codec_id) {
             default:
                 printf("Bad video codec for mp4 container (must be H.264 or HEVC)\n");
