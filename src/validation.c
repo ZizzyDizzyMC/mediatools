@@ -205,6 +205,36 @@ int mediatools_validate_video(AVFormatContext *format)
         case AV_CODEC_ID_SVG:
             ;
         }
+    } else if (strcmp(iformat->name, "mov,mp4,m4a,3gp,3g2,mj2") == 0) {
+        switch (vpar->codec_id) {
+            default:
+                printf("Bad video codec for mp4 container (must be H.264 or HEVC)\n");
+                return false;
+            case AV_CODEC_ID_H264:
+            case AV_CODEC_ID_HEVC:
+            case AV_CODEC_ID_MPEG4:
+                ;
+        }
+        if (!validate_video_pixel_format(vpar->format)) {
+            printf("Found unsupported pixel format %s\n", av_get_pix_fmt_name(vpar->format));
+            return false;
+        }
+        if (apar) {
+            switch (apar->codec_id) {
+            default:
+                printf("Bad audio codec for Mp4 container (must be AAC or MP3)\n");
+                return false;
+            case AV_CODEC_ID_AAC:
+            case AV_CODEC_ID_MP3:
+                ;
+            }
+
+            if (!validate_audio_sample_format(apar->format)) {
+                printf("Found unsupported audio sample format %s\n", av_get_sample_fmt_name(apar->format));
+                return false;
+            }
+        }
+    
     } else {
         printf("Unknown input format\n");
         return false;
