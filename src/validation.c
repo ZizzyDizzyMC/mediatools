@@ -120,7 +120,7 @@ int mediatools_validate_video(AVFormatContext *format)
         return false;
     }
 
-    AVInputFormat *iformat = format->iformat;
+    const AVInputFormat *iformat = format->iformat;
     AVCodecParameters *vpar = format->streams[vstream_idx]->codecpar;
     AVCodecParameters *apar = NULL;
 

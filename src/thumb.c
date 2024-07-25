@@ -1,14 +1,15 @@
 #include <libavformat/avformat.h>
+#include <libavcodec/avcodec.h>
 #include <stdio.h>
 #include "png.h"
 #include "util.h"
 
 int main(int argc, char *argv[])
 {
+    const AVCodec *vcodec = NULL;
     AVFormatContext *format = NULL;
     AVCodecContext *vctx = NULL;
     AVStream *vstream = NULL;
-    AVCodec *vcodec = NULL;
     AVFrame *frame = NULL;
     AVPacket pkt;
 
