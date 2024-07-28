@@ -29,7 +29,7 @@ static const AVInputFormat *image2_demuxer()
 int open_input_correct_demuxer(AVFormatContext **ctx, const char *filename)
 {
     if (avformat_open_input(ctx, filename, NULL, NULL) < 0) {
-        return avformat_open_input(ctx, filename, image2_demuxer(), NULL);
+        return -1;
     }
 
     // Should usually happen
