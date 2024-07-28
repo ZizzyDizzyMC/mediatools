@@ -18,6 +18,7 @@ static int valid_demuxer(const AVInputFormat *fmt)
       fmt == av_find_input_format("jpeg_pipe") ||
       fmt == av_find_input_format("gif")       ||
       fmt == av_find_input_format("svg_pipe")  ||
+      fmt == av_find_input_format("mov")       ||
       fmt == av_find_input_format("matroska");
 }
 
@@ -29,7 +30,7 @@ static const AVInputFormat *image2_demuxer()
 int open_input_correct_demuxer(AVFormatContext **ctx, const char *filename)
 {
     if (avformat_open_input(ctx, filename, NULL, NULL) < 0) {
-        return -1;
+        return avformat_open_input(ctx, filename, image2_demuxer(), NULL);
     }
 
     // Should usually happen
