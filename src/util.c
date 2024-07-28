@@ -9,6 +9,7 @@ static int valid_demuxer(const AVInputFormat *fmt)
     // jpeg_pipe: JPEG
     // gif:       GIF
     // svg_pipe:  SVG (recommended not to use this currently)
+    // mov:       MP4
     // matroska:  MKV/WebM
 
     return
